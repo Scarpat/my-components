@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ISideNavigationBarItems } from "@/components/SideNavigationBar/SideNavigationBar_types";
+import SideNavigationBar from "@/components/SideNavigationBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +16,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const nav: ISideNavigationBarItems[] = [
+    {
+      label: "Home",
+      url: "/",
+    },
+  ];
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={'flex'}>
+        <SideNavigationBar navigations={nav} />
+        {children}
+      </body> 
     </html>
   );
 }
