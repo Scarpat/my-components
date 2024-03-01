@@ -208,7 +208,7 @@ const Table = ({
             onChange={handleItemsPerPageChange}
             className="ml-2"
           >
-            {pageSizes.map((num)=>(<option value={num}>{num}</option>))}
+            {pageSizes.map((num)=>(<option key={num} value={num}>{num}</option>))}
           </select>
         </div>
         <div className="flex gap-3 ">
