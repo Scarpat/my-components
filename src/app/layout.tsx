@@ -22,29 +22,18 @@ export default function RootLayout({
       url: "/",
     },
     {
-      label: "Home",
-      url: "/",
-      submenu: [
-        {
-          label: "Home",
-          url: "/",
-        }, {
-          label: "Home",
-          url: "/",
-        },
-      ]
-    },
-    {
-      label: "Home",
-      url: "/",
+      label: "Tables",
+      url: "/table",
     },
   ];
   return (
     <html lang="en">
-      <body className={'flex'}>
+      <body className={"flex"}>
         <SideNavigationBar navigations={nav} canBeClosed />
-        {children}
-      </body> 
+        <div className="w-full bg-slate-100 text-black min-h-screen">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

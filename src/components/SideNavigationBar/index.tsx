@@ -16,7 +16,8 @@ export default function SideNavigationBar({
 
   return (
     <>
-        <aside className={` transition-all ease-linear duration-300 relative shadow-lg shadow-black/30 lg:max-w-[90%]  bg-white h-screen py-5 ${navIsOpen ? ' w-80' : 'overflow-hidden w-0'}`}>
+    <div className={`transition-all ease-linear duration-300 ${navIsOpen ? ' w-80' : 'overflow-hidden w-0'}`}/>
+        <aside className={`fixed transition-all ease-linear duration-300  shadow-lg shadow-black/30 lg:max-w-[90%]  bg-white h-screen py-5 ${navIsOpen ? ' w-80' : 'overflow-hidden w-0'}`}>
           <div>
           {CustomTop && CustomTop()}
           </div>
@@ -67,11 +68,11 @@ export default function SideNavigationBar({
           onClick={() => {
             setNavIsOpen(!navIsOpen);
           }}
-          className={`icon cursor-pointer flex items-center justify-center  absolute top-3 duration-[450ms]  z-[21] bg-white shadow-md shadow-black/30 rounded-full w-12 h-12 text-lg transition-all font-bold text-white ${
-            navIsOpen ? "  left-64 " : "- left-3 "
+          className={`icon cursor-pointer ease-linea flex items-center justify-center  fixed top-3 duration-[450ms]  z-[21] bg-white shadow-md shadow-black/30 rounded-full w-12 h-12 text-lg transition-all font-bold text-white ${
+            navIsOpen ? "  left-72 " : "- left-3 "
           }`}
         >
-          <div className={` transition-all menu ${navIsOpen ? "" : "menu2"}`}/>
+          <div className={` transition-all menu ${navIsOpen ? "menu2" : ""}`}/>
           
         </div>}
     </>

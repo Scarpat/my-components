@@ -44,20 +44,24 @@ const Table = ({
   const handlePageChange = (page: number) => {
     if (onPageChange) {
       setCurrentPage(page);
-      onPageChange(page * itemsPerPage);
+      onPageChange(page);
     }
   };
-
+  console.log(itemsPerPage,totalItems)
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   const pageRange = 1; // Definir a quantidade de páginas adjacentes que deseja mostrar
 
   const renderPageNumbers = () => {
     let pageNumbers = [];
-    let startPage = Math.max(1, currentPage - pageRange);
-    let endPage = Math.min(totalPages, currentPage + pageRange);
-
-    if (currentPage - pageRange > 1) {
-      pageNumbers.push(
+    let startPage = Math.max(1, currentPage - pageRange + 1);
+    let endPage = Math.min(totalPages, currentPage + pageRange );
+  
+    if (startPage > 2) {
+      pageNumbers.push(<span key={-1}>...</span>);
+    }
+  
+    if (startPage > 1) {
+      pageNumbers.unshift(
         <button
           key={1}
           onClick={() => handlePageChange(0)}
@@ -66,29 +70,28 @@ const Table = ({
           1
         </button>
       );
-      if (currentPage - pageRange > 2) {
-        pageNumbers.push(<span key={-1}>...</span>);
-      }
     }
-
-    for (let i = startPage; i <= endPage; i++) {
+  
+    for (let i = startPage; i <= endPage + 1; i++) {
+      if(i <= totalPages) {
       pageNumbers.push(
         <button
           key={i}
           onClick={() => handlePageChange(i - 1)}
           className={`h-6 w-6 sm:h-8 sm:w-8 flex items-center justify-center border border-gray-300 rounded font-bold ${
-            i - 1 === currentPage ? "text-white bg-contrast-blue" : ""
+            i - 1 == currentPage ? "text-white bg-blue-900" : ""
           }`}
         >
           {i}
         </button>
-      );
+      );}
     }
-
-    if (currentPage + pageRange < totalPages) {
-      if (currentPage + pageRange < totalPages - 1) {
-        pageNumbers.push(<span key={-2}>...</span>);
-      }
+  
+    if (endPage < totalPages - 1) {
+      pageNumbers.push(<span key={-2}>...</span>);
+    }
+  
+    if (endPage + 1 < totalPages) {
       pageNumbers.push(
         <button
           key={totalPages}
@@ -99,9 +102,10 @@ const Table = ({
         </button>
       );
     }
-
+  
     return pageNumbers;
   };
+  
 
   const currentData = data;
 
