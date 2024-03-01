@@ -15,4 +15,5 @@ export type ITableProps = {
     onPageChange?: (page: number) => void;
     onPageSizeChange?: (size: number) => void;
     title?: string;
+    pageSizes?: number[]
   };

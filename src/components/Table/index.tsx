@@ -7,10 +7,11 @@ const Table = ({
   data,
   title = "Itens por página:  ",
   totalItems = 10,
+  pageSizes = [5, 10, 20],
   onPageChange,
   onPageSizeChange,
 }: ITableProps) => {
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [itemsPerPage, setItemsPerPage] = useState(pageSizes[0]);
   const [currentPage, setCurrentPage] = useState(0);
 
   const handleItemsPerPageChange = (
@@ -207,9 +208,7 @@ const Table = ({
             onChange={handleItemsPerPageChange}
             className="ml-2"
           >
-            <option value={5}>5</option>
-            <option value={10}>10</option>
-            <option value={20}>20</option>
+            {pageSizes.map((num)=>(<option value={num}>{num}</option>))}
           </select>
         </div>
         <div className="flex gap-3 ">

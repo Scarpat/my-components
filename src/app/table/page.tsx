@@ -130,6 +130,7 @@ export default function TablePage() {
         onPageSizeChange={(pageSize) => {
           setPageSize(pageSize);
         }}
+        pageSizes={[10,20,50]}
       />
       <CodeMirror
         value={`export default function PageWithTable(){
@@ -190,6 +191,7 @@ export default function TablePage() {
         onPageSizeChange={(pageSize) => {
           setPageSize(pageSize);
         }}
+        pageSizes={[10,20,50]}
       />
             )
         }`}
