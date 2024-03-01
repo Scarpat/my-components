@@ -11,9 +11,9 @@ export default function Home() {
           components designed and developed by me. Each component in this
           showcase is a testament to my passion for design and development.
         </p>
-        <h1 className="w-full  text-2xl text-blue-900">What's Inside?</h1>
+        <h1 className="w-full  text-2xl text-blue-900">What&apos;s Inside?</h1>
         <p className="text-lg text-slate-800 my-4">
-          In this project, you'll find a variety of components, each with its
+          In this project, you&apos;ll find a variety of components, each with its
           own unique functionality and aesthetic. From simple buttons and form
           elements to complex interactive components, this showcase demonstrates
           my ability to create versatile and reusable components.

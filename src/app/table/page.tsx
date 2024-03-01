@@ -4,7 +4,7 @@ import { ITableColumn } from "@/components/Table/Table_types";
 import CodeMirror from "@uiw/react-codemirror";
 import { useState } from "react";
 
-export default function tablePage() {
+export default function TablePage() {
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   console.log(pageSize, page);
@@ -82,13 +82,13 @@ export default function tablePage() {
         Introducing Our Next.js Table Component
       </h1>
       <p className="text-lg text-slate-800 my-4">
-        Hello everyone, we're excited to present our new Table component for
+        Hello everyone, we&apos;re excited to present our new Table component for
         Next.js!
       </p>
       <h1 className="w-full  text-2xl text-blue-900">Overview</h1>
       <p className="text-lg text-slate-800 my-4">
         Our Table component is a flexible and efficient solution for displaying
-        data in a tabular format in your Next.js applications. It's designed
+        data in a tabular format in your Next.js applications. It&apos;s designed
         with customization and scalability in mind, allowing you to present your
         data exactly how you want it.
       </p>
