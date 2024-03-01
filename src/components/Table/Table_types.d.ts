@@ -14,6 +14,6 @@ export type ITableProps = {
     totalItems?: number;
     onPageChange?: (page: number) => void;
     onPageSizeChange?: (size: number) => void;
-    title?: string;
+    itemsPerPageTitle?: string;
     pageSizes?: number[]
   };

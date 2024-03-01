@@ -5,7 +5,7 @@ import { ITableProps } from "./Table_types";
 const Table = ({
   columns,
   data,
-  title = "Itens por página:  ",
+  itemsPerPageTitle = "Items per page:  ",
   totalItems = 10,
   pageSizes = [5, 10, 20],
   onPageChange,
@@ -202,7 +202,7 @@ const Table = ({
       </div>
       <div className="flex items-center justify-center flex-col-reverse w-full gap-3 sm:flex-row sm:justify-between p-4 border-t border-gray-200">
         <div>
-          {title}
+          {itemsPerPageTitle}
           <select
             value={itemsPerPage}
             onChange={handleItemsPerPageChange}

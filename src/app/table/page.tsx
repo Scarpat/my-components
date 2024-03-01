@@ -130,7 +130,7 @@ export default function TablePage() {
         onPageSizeChange={(pageSize) => {
           setPageSize(pageSize);
         }}
-        pageSizes={[10,20,50]}
+        pageSizes={[10, 20, 50]}
       />
       <CodeMirror
         value={`export default function PageWithTable(){
@@ -198,6 +198,140 @@ export default function TablePage() {
         theme={"dark"}
         height="400px"
       />
+      <div className="w-full min-w-60 overflow-auto">
+        <table className="w-max min-w-full mt-10 border border-blue-800">
+          <thead>
+            <tr>
+              <th className="border border-blue-800 p-2">Table Properties</th>
+              <th className="border border-blue-800 p-2">Descriptions</th>
+            </tr>
+          </thead>
+          <tr>
+            <td className="border border-blue-800 p-2">columns</td>
+            <td className="border border-blue-800 p-2">
+              <p className="text-md text-gray-700 bg-gray-200 w-fit px-5 rounded-full">
+                ITableColumn[] - Defines the headers and information seen in the
+                table
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td className="border border-blue-800 p-2">data</td>
+            <td className="border border-blue-800 p-2">
+              <p className="text-md text-gray-700 bg-gray-200 w-fit px-5 rounded-full">
+                any[] - The data that will be displayed in the table
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td className="border border-blue-800 p-2">totalItems</td>
+            <td className="border border-blue-800 p-2">
+              <p className="text-md text-gray-700 bg-gray-200 w-fit px-5 rounded-full">
+                number - Total number of data to render paginations
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td className="border border-blue-800 p-2">onPageChange</td>
+            <td className="border border-blue-800 p-2">
+              <p className="text-md text-gray-700 bg-gray-200 w-fit px-5 rounded-full">
+                {
+                  "(page: number) => void - Function that informs the current page"
+                }
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td className="border border-blue-800 p-2">onPageSizeChange</td>
+            <td className="border border-blue-800 p-2">
+              <p className="text-md text-gray-700 bg-gray-200 w-fit px-5 rounded-full">
+                {
+                  "(size: number) => void - Function that informs the current size of the table"
+                }
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td className="border border-blue-800 p-2">itemsPerPageTitle</td>
+            <td className="border border-blue-800 p-2">
+              <p className="text-md text-gray-700 bg-gray-200 w-fit px-5 rounded-full">
+                string
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td className="border border-blue-800 p-2">pageSizes</td>
+            <td className="border border-blue-800 p-2">
+              <p className="text-md text-gray-700  bg-gray-200 w-fit px-5 rounded-full">
+                number[] - By default [5, 10, 20]
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div className="w-full min-w-60 overflow-auto">
+        <table className="w-max min-w-full mt-10 border border-blue-800">
+          <thead>
+            <tr>
+              <th className="border border-blue-800 p-2">Column Properties</th>
+              <th className="border border-blue-800 p-2">Descriptions</th>
+            </tr>
+          </thead>
+          <tr>
+            <td className="border border-blue-800 p-2">header</td>
+            <td className="border border-blue-800 p-2">
+              <p className="text-md text-gray-700 bg-gray-200 w-fit px-5 rounded-full">
+                string - Sets the column header
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td className="border border-blue-800 p-2">accessor</td>
+            <td className="border border-blue-800 p-2">
+              <p className="text-md text-gray-700 bg-gray-200 w-fit px-5 rounded-full">
+                string - Defines the key of the object from which the column
+                will take value
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td className="border border-blue-800 p-2">isSubmenu</td>
+            <td className="border border-blue-800 p-2">
+              <p className="text-md text-gray-700 bg-gray-200 w-fit px-5 rounded-full">
+                boolean - Defines whether to render submenus
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td className="border border-blue-800 p-2">subcolumns</td>
+            <td className="border border-blue-800 p-2">
+              <p className="text-md text-gray-700 bg-gray-200 w-fit px-5 rounded-full">
+                ITableColumn[] - Defines the subcolumns
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td className="border border-blue-800 p-2">Cell</td>
+            <td className="border border-blue-800 p-2">
+              <p className="text-md text-gray-700 bg-gray-200 w-fit px-5 rounded-full">
+                {
+                  "(row: any, i: number) => JSX.Element; - Function to render custom columns"
+                }
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td className="border border-blue-800 p-2">HeaderCell</td>
+            <td className="border border-blue-800 p-2">
+              <p className="text-md text-gray-700 bg-gray-200 w-fit px-5 rounded-full">
+                {
+                  "(column: any, i: number) => JSX.Element; - Function to render custom header"
+                }
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   );
 }
