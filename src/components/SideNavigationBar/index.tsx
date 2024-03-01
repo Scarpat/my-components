@@ -16,9 +16,10 @@ export default function SideNavigationBar({
 
   return (
     <>
-      <div className="flex">
-        <aside className={` transition-all duration-500 relative min-w-60 w-full shadow-lg lg:max-w-[90%]  bg-white h-screen py-5 ${navIsOpen ? ' left-0' : '-left-80'}`}>
+        <aside className={` transition-all ease-linear duration-300 relative shadow-lg shadow-black/30 lg:max-w-[90%]  bg-white h-screen py-5 ${navIsOpen ? ' w-80' : 'overflow-hidden w-0'}`}>
+          <div>
           {CustomTop && CustomTop()}
+          </div>
           <div className="flex flex-col w-full items-center h-full bg-white overflow-y-auto px-2">
             {navigations.map((items, index) => (
               <>
@@ -28,14 +29,14 @@ export default function SideNavigationBar({
                   <div className="w-full">
                     <button
                       onClick={() => toggleOpen(index)}
-                      className="flex cursor-pointer z-20 relative items-center justify-center text-gray-600 bg-white hover:bg-gray-100 rounded transition-all duration-300 p-2 w-full text-center"
+                      className={`${open[index] && navIsOpen && 'border-b border-gray'} flex cursor-pointer z-20 relative items-center justify-center text-gray-600 bg-white hover:bg-gray-100 rounded transition-all duration-300 p-2 w-full text-center`}
                     >
                       <p className="w-fit text-lg mx-auto">{items.label}</p>
                     </button>
                     <div
-                      className={`flex w-full z-0 flex-col  transition-all duration-500 border-gray-200 h-fit relative ${
-                        open[index]
-                          ? `max-h-96 border-t left-0`
+                      className={`flex w-full z-0 flex-col  transition-all duration-500  h-fit relative ${
+                        open[index] && navIsOpen
+                          ? `max-h-96 left-0`
                           : "max-h-0 -left-80"
                       } `}
                     >
@@ -43,7 +44,7 @@ export default function SideNavigationBar({
                         <Link
                           key={subIndex}
                           href={subItem.url}
-                          className="text-gray-600 border-b px-3 border-gray-200 bg-white hover:bg-gray-100 rounded transition-all duration-300 p-1 w-full text-left"
+                          className="text-gray-600 px-3  bg-white hover:bg-gray-100 rounded transition-all duration-300 p-1 w-full text-left"
                         >
                           {subItem.label}
                         </Link>
@@ -62,18 +63,17 @@ export default function SideNavigationBar({
             ))}
           </div>
         </aside>
-    {canBeClosed &&    <p
+    {canBeClosed &&    <div
           onClick={() => {
             setNavIsOpen(!navIsOpen);
           }}
-          className={`cursor-pointer  relative flex items-center duration-[600ms] justify-center text-center z-[21] p-4 bg-red-500 rounded-full w-12 h-12 text-lg transition-all font-bold text-white ${
-            navIsOpen ? "rotate-90 -left-5 " : "-rotate-90 -left-60 "
+          className={`icon cursor-pointer flex items-center justify-center  absolute top-3 duration-[450ms]  z-[21] bg-white shadow-md shadow-black/30 rounded-full w-12 h-12 text-lg transition-all font-bold text-white ${
+            navIsOpen ? "  left-64 " : "- left-3 "
           }`}
         >
-          {" "}
-          V
-        </p>}
-      </div>
+          <div className={` transition-all menu ${navIsOpen ? "" : "menu2"}`}/>
+          
+        </div>}
     </>
   );
 }

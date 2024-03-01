@@ -31,3 +31,53 @@ body {
     text-wrap: balance;
   }
 }
+
+
+label.icon {
+  position: fixed;
+  z-index: 200;
+}
+
+.icon .menu,
+.icon .menu::before,
+.icon .menu::after {
+  background: #9FB1BD;
+  content: '';
+  display: block;
+  height: 2px;
+  position: absolute;
+  transition: background ease .3s, top ease .3s .3s, transform ease .3s;
+  width: 20px;
+}
+
+
+
+.icon .menu {
+  left: 14px;
+  top: 24px;
+}
+
+.icon .menu::before {
+  top: -6px;
+}
+
+.icon .menu::after {
+  top: 6px;
+}
+.icon .menu2 {
+  background: transparent;
+}
+
+.icon .menu2::before {
+  transform: rotate(45deg);
+}
+
+.icon .menu2::after {
+  transform: rotate(-45deg);
+}
+
+.icon .menu2::before,
+.icon .menu2::after {
+  top: 0;
+  transition: top ease .3s, transform ease .3s .3s;
+}
