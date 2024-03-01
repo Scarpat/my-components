@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ITableProps } from "./Table_types";
 
 
@@ -10,27 +10,8 @@ const Table = ({
   onPageChange,
   onPageSizeChange,
 }: ITableProps) => {
-  const [selectedRows, setSelectedRows] = useState<number[]>([]);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(0);
-
-  const toggleRowSelection = (rowIndex: number) => {
-    const isSelected = selectedRows.includes(rowIndex);
-    if (isSelected) {
-      setSelectedRows(selectedRows.filter((row) => row !== rowIndex));
-    } else {
-      setSelectedRows([...selectedRows, rowIndex]);
-    }
-  };
-
-  const toggleAllRowsSelection = () => {
-    if (selectedRows.length === data.length) {
-      setSelectedRows([]);
-    } else {
-      const allRowIndices = Array.from(Array(data.length).keys());
-      setSelectedRows(allRowIndices);
-    }
-  };
 
   const handleItemsPerPageChange = (
     e: React.ChangeEvent<HTMLSelectElement>
@@ -47,7 +28,6 @@ const Table = ({
       onPageChange(page);
     }
   };
-  console.log(itemsPerPage,totalItems)
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   const pageRange = 1; // Definir a quantidade de páginas adjacentes que deseja mostrar
 
@@ -124,22 +104,12 @@ const Table = ({
               {columns.map((column, columnIndex) => (
                 <th
                   key={columnIndex}
-                  className={` border-x  border-gray-200 font-bold w-fit text-center h-full ${
-                    column.accessor === "checkbox" ? "w-4" : ""
-                  }`}
+                  className={` border-x  border-gray-200 font-bold w-fit text-center h-full `}
                 >
-                  <div className="flex flex-col h-full">
+                {column.HeaderCell ? column.HeaderCell(column, columnIndex) :  <div className="flex flex-col h-full">
                   <p className="p-3">
-                  {column.Header}
+                  {column.header}
                   </p>
-                  {column.accessor === "checkbox" && (
-                    <input
-                      type="checkbox"
-                      className="h-6 w-6 ml-3 mt-3 "
-                      checked={selectedRows.length === data.length}
-                      onChange={toggleAllRowsSelection}
-                    />
-                  )}
                   {column.isSubmenu && column.subcolumns && (
                     <div 
                     style={{gridTemplateColumns: `repeat(${column.subcolumns.length}, 1fr)`}}
@@ -150,7 +120,7 @@ const Table = ({
                           className={"border-t border-gray-200 flex flex-col w-full"  + (  subcolumnIndex +1  !== column.subcolumns?.length  && ' border-r')}
                         >
                           <p className="mx-3">
-                          {subcolumn.Header}
+                          {subcolumn.header}
                           </p>
                           {subcolumn.isSubmenu && subcolumn.subcolumns && (
                             <div className={`grid grid-cols-${subcolumn.subcolumns.length}`}>
@@ -161,7 +131,7 @@ const Table = ({
                                     className={"flex border-t border-gray-200 justify-evenly w-full" + (  subsubcolumnIndex +1  !== subcolumn.subcolumns?.length  && ' border-r')}
                                   >
                                   <p className="mx-3">
-                                    {subsubcolumn.Header}
+                                    {subsubcolumn.header}
                                   </p>
                                   </div>
                                 )
@@ -171,7 +141,8 @@ const Table = ({
                         </div>
                       ))}
                     </div>
-                  )}</div>
+                  )}
+                  </div>}
                 </th>
               ))}
             </tr>
@@ -186,14 +157,7 @@ const Table = ({
                       rowIndex % 2 ? "bg-white" : "bg-gray-100"
                     }`}
                   >
-                    {column.accessor === "checkbox" ? (
-                      <input
-                        type="checkbox"
-                        className="h-6 w-6 ml-3 mt-3"
-                        checked={selectedRows.includes(rowIndex)}
-                        onChange={() => toggleRowSelection(rowIndex)}
-                      />
-                    ) : column.isSubmenu && column.subcolumns ? (
+                    {column.isSubmenu && column.subcolumns ? (
                       <div
                     style={{gridTemplateColumns: `repeat(${column.subcolumns.length}, 1fr)`}}
                         className={`grid`}

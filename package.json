@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
     "@uiw/react-codemirror": "^4.21.24",
     "next": "14.1.0",
     "react": "^18",

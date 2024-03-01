@@ -12,5 +12,5 @@ export type ISideNavigationBarSubItems = {
 export type ISideNavigationBarProps = {
     navigations: ISideNavigationBarItems[]
     CustomTop?: () => JSX.Element;
-    canBeClosed?: boolean;
+    absolute?: boolean;
 }

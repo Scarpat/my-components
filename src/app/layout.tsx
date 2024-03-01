@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={"flex"}>
-        <SideNavigationBar navigations={nav} canBeClosed />
+        <SideNavigationBar navigations={nav} absolute={false} />
         <div className="w-full bg-slate-100 text-black min-h-screen">
           {children}
         </div>

@@ -3,36 +3,43 @@ import Table from "@/components/Table";
 import { ITableColumn } from "@/components/Table/Table_types";
 import CodeMirror from "@uiw/react-codemirror";
 import { useState } from "react";
+import { IoPeopleSharp } from "react-icons/io5";
 
 export default function TablePage() {
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
-  console.log(pageSize, page);
   const columns: ITableColumn[] = [
     {
-      Header: "#",
+      header: "#",
       accessor: "",
+      HeaderCell() {
+        return (
+          <div className="flex items-center text-blue-900 justify-center w-full">
+            <IoPeopleSharp size={32} />
+          </div>
+        );
+      },
       Cell(row, i) {
-        // The row contains the row information, example:
+        // The row contains the row information, example: row.row.name; row.row.cellphone
         // the i is the index of the row in this page
         return <p>{i + 1 + pageSize * page}</p>;
       },
     },
     {
       accessor: "name",
-      Header: "Name",
+      header: "Name",
     },
     {
-      Header: "User Informations ",
+      header: "User Informations ",
       accessor: "",
       isSubmenu: true,
       subcolumns: [
         {
-          Header: "Cellphone",
+          header: "Cellphone",
           accessor: "cellphone",
         },
         {
-          Header: "Birthday",
+          header: "Birthday",
           accessor: "birthday",
         },
       ],
@@ -81,34 +88,34 @@ export default function TablePage() {
       <h1 className="w-full  text-4xl text-blue-900">
         Introducing Our Next.js Table Component
       </h1>
-      <p className="text-lg text-slate-800 my-4">
-        Hello everyone, we&apos;re excited to present our new Table component for
-        Next.js!
+      <p className="text-lg text-slate-800 my-4 text-justify">
+        Hello everyone, we&apos;re excited to present our new Table component
+        for Next.js!
       </p>
       <h1 className="w-full  text-2xl text-blue-900">Overview</h1>
-      <p className="text-lg text-slate-800 my-4">
+      <p className="text-lg text-slate-800 my-4 text-justify">
         Our Table component is a flexible and efficient solution for displaying
-        data in a tabular format in your Next.js applications. It&apos;s designed
-        with customization and scalability in mind, allowing you to present your
-        data exactly how you want it.
+        data in a tabular format in your Next.js applications. It&apos;s
+        designed with customization and scalability in mind, allowing you to
+        present your data exactly how you want it.
       </p>
       <h1 className="w-full  text-2xl text-blue-900">Features</h1>
-      <p className="text-lg text-slate-800 my-4">
+      <p className="text-lg text-slate-800 my-4 text-justify">
         - <strong>Efficient Rendering</strong>: Our Table component uses
         efficient rendering techniques to ensure smooth performance, even when
         dealing with large datasets.
       </p>
-      <p className="text-lg text-slate-800 my-4">
+      <p className="text-lg text-slate-800 my-4 text-justify">
         - <strong>Customizable Columns</strong>: You can easily customize the
         columns of the table, including the header and cell content, width,
         alignment, and more.
       </p>
-      <p className="text-lg text-slate-800 my-4">
+      <p className="text-lg text-slate-800 my-4 text-justify">
         - <strong>Sorting and Filtering</strong>: The Table component supports
         sorting and filtering out of the box, providing a seamless user
         experience.
       </p>
-      <p className="text-lg text-slate-800 my-4">
+      <p className="text-lg text-slate-800 my-4 text-justify">
         - <strong>Responsive Design</strong>: The Table component is responsive,
         ensuring it looks great on devices of all sizes.
       </p>
@@ -130,15 +137,22 @@ export default function TablePage() {
             const [pageSize, setPageSize] = useState(10);
 
             const columns: ITableColumn[] = [
-                {
-                    Header: "#",
-                    accessor: "",
-                    Cell(row, i) {
-                      // The row contains the row information, example:
-                      // the i is the index of the row in this page
-                      return <p>{i + 1 + pageSize * page}</p>;
-                    },
+              {
+                header: "#",
+                accessor: "",
+                HeaderCell() {
+                  return (
+                    <div className="flex items-center text-blue-900 justify-center w-full">
+                      <IoPeopleSharp size={32} />
+                    </div>
+                  );
                 },
+                Cell(row, i) {
+                  // The row contains the row information, example: row.row.name; row.row.cellphone
+                  // the i is the index of the row in this page
+                  return <p>{i + 1 + pageSize * page}</p>;
+                },
+              },
                 {
                     accessor: "name",
                     Header: "Name",
@@ -179,12 +193,9 @@ export default function TablePage() {
       />
             )
         }`}
-        
         theme={"dark"}
         height="400px"
       />
-      
-      
     </div>
   );
 }
