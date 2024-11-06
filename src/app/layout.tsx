@@ -22,9 +22,21 @@ export default function RootLayout({
       url: "/",
     },
     {
-      label: "Tables",
+      label: "Table",
       url: "/table",
     },
+    {
+      label: "Navigation",
+      url: "/",
+      submenu: [
+        { label: "Sidebar", url: "/sidebar" },
+        { label: "Topbar", url: "/topbar" },
+      ],
+    },
+    {
+      label: "Fast Image Carousel",
+      url: "/fast-Image-carousel",
+    }
   ];
   return (
     <html lang="en">
